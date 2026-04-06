@@ -1,20 +1,56 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/kurser.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laboration 1 - Typescript</title>
-  </head>
-  <body>
-    <nav>
-      <img src="/kurser.svg" width="300">
-    </nav>
-    <main><h1>Mina kurser</h1></main>
-    
-    <footer>
-      <h2>Elin Ronda - laboration 1</h2>
-    </footer>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/kurser.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboration 1 - Typescript</title>
+</head>
+
+<body>
+  <nav>
+    <img src="/kurser.svg" width="300">
+  </nav>
+  <main>
+    <h1>Mina kurser</h1>
+    <p>Här kan du se, lägga till och radera kurser.</p>
+    <form>
+      <div class="inputRad">
+        <label for="courseCode">Kurskod</label>
+        <input type="text" name="courseCode" id="courseCode">
+      </div>
+      <div class="inputRad">
+        <label for="courseName">Kursnamn</label>
+        <input type="text" name="courseName" id="courseName">
+      </div>
+      <div class="inputRad">
+        <label for="Progression">Progression</label>
+        <input type="text" name="progression" id="progression">
+      </div>
+      <div class="inputRad">
+        <label for="syllabus">Länk till kursplan</label>
+        <input type="url" name="syllabus" id="syllabus">
+      </div>
+      <button>Lägg till kurs</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Kurskod</th>
+          <th>Kursnamn</th>
+          <th>Progression</th>
+          <th>Kursplan</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <footer>
+    <h2>Elin Ronda - laboration 1</h2>
+  </footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
