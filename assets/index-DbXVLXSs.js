@@ -6,7 +6,7 @@
                 <td>${e.syllabus}</td>
                 <td><button class="deleteBtn">Delete</button></td>
             </tr>
-        `}));function a(e){e.preventDefault();let n=document.getElementById(`courseCode`).value,i=document.getElementById(`courseName`).value,a=document.getElementById(`progression`).value,o=document.getElementById(`syllabus`).value,s={courseCode:n,courseName:i,progression:a,syllabus:o};if(r.push(s),localStorage.setItem(`courses`,JSON.stringify(r)),t.innerHTML+=`
+        `}));function a(e){e.preventDefault();let n=document.getElementById(`courseCode`).value.trim().toUpperCase(),i=document.getElementById(`courseName`).value,a=document.getElementById(`progression`).value,o=document.getElementById(`syllabus`).value,s={courseCode:n,courseName:i,progression:a,syllabus:o};if(r.some(e=>e.courseCode.toUpperCase()===n)){alert(`Kursen finns redan!`);return}r.push(s),localStorage.setItem(`courses`,JSON.stringify(r)),t.innerHTML+=`
             <tr>
                 <td>${n}</td>
                 <td>${i}</td>
@@ -14,4 +14,4 @@
                 <td>${o}</td>
                 <td><button class="deleteBtn">Delete</button></td>
             </tr>
-        `,r.some(e=>e.courseCode===n)){alert(`Kursen finns redan!`);return}}function o(e){let t=e.target;if(!t.classList.contains(`deleteBtn`))return;let n=t.closest(`tr`),i=n.rowIndex-1;r.splice(i,1),localStorage.setItem(`courses`,JSON.stringify(r)),n.remove()}e.addEventListener(`submit`,a),n.addEventListener(`click`,o);
+        `}function o(e){let t=e.target;if(!t.classList.contains(`deleteBtn`))return;let n=t.closest(`tr`),i=n.rowIndex-1;r.splice(i,1),localStorage.setItem(`courses`,JSON.stringify(r)),n.remove()}e.addEventListener(`submit`,a),n.addEventListener(`click`,o);
