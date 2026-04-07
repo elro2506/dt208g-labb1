@@ -18,7 +18,7 @@ if (savedCourses) {
     courses = JSON.parse(savedCourses);
 
     courses.forEach(course => {
-    tbodyEl.innerHTML += `
+        tbodyEl.innerHTML += `
             <tr>
                 <td>${course.courseCode}</td>
                 <td>${course.courseName}</td>
@@ -27,7 +27,7 @@ if (savedCourses) {
                 <td><button class="deleteBtn">Delete</button></td>
             </tr>
         `;
-});
+    });
 }
 
 function onAddWebsite(e: Event): void {
@@ -44,13 +44,16 @@ function onAddWebsite(e: Event): void {
         progression,
         syllabus
     };
-
+    if (courses.some(course => course.courseCode === courseCode)) {
+        alert("Kursen finns redan!");
+        return;
+    }
     courses.push(course);
 
     localStorage.setItem("courses", JSON.stringify(courses));
- 
 
-      tbodyEl.innerHTML += `
+
+    tbodyEl.innerHTML += `
             <tr>
                 <td>${courseCode}</td>
                 <td>${courseName}</td>
@@ -60,10 +63,7 @@ function onAddWebsite(e: Event): void {
             </tr>
         `;
 
-        if (courses.some(course => course.courseCode === courseCode)) {
-            alert("Kursen finns redan!");
-            return;
-        }
+
 }
 
 function onDeleteRow(e: Event): void {
@@ -71,11 +71,11 @@ function onDeleteRow(e: Event): void {
 
     if (!target.classList.contains("deleteBtn")) return;
     const row = target.closest("tr") as HTMLTableRowElement;
-    const index = row.rowIndex -1;
+    const index = row.rowIndex - 1;
 
     courses.splice(index, 1);
     localStorage.setItem("courses", JSON.stringify(courses));
-row.remove();
+    row.remove();
 }
 
 formEl.addEventListener("submit", onAddWebsite);
